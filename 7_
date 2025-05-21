@@ -1,0 +1,7 @@
+#Separate file ./reference/genome_intervals.list by rows and additinal 1-29 rows by 1 mnl length. 
+See results here (/mnt/PROJECTS1/RI_MAXIM/4_bwa_mem2/reference/genome_intervals/$1.list). 30.list....4011.list - contigs; 4012.list...6523.list - normal chromosomes.
+for i in {4014..66523}; do
+./run.sh $i
+done
+whete run.sh is 
+java -jar /home/MaxRi/scripts/gatk-4.6.1.0/gatk-package-4.6.1.0-local.jar GenomicsDBImport --genomicsdb-workspace-path GENOMICS_DB_$1 --tmp-dir /mnt/PROJECTS1/RI_MAXIM/6_db/tmp --sample-name-map sample_map.txt --reader-threads 1 -L /mnt/PROJECTS1/RI_MAXIM/4_bwa_mem2/reference/genome_intervals/$1.list
