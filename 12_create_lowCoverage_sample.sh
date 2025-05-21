@@ -33,16 +33,16 @@ COVERAGES=(0.1 0.3 0.5 0.7 0.9)
 for COV in "${COVERAGES[@]}"; do
     # Вычисляем коэффициент субвыборки
     SCALE=$(echo "$COV / $AVG_COV" | bc -l)
-....
+
     # Проверяем, что коэффициент корректный
     if (( $(echo "$SCALE > 1.0" | bc -l) )); then
         echo "Пропускаем $COV, так как оно больше исходного покрытия"
         continue
     fi
-....
+
     # Создаём выходной файл
     OUT_BAM="$OUT_DIR/$(basename "$BAM_FILE" .bam)_${COV}x.bam"
-....
+
     echo "Создаём BAM-файл с покрытием ${COV}x (коэффициент $SCALE)"
     samtools view -hb -s "$SCALE" "$BAM_FILE" -o "$OUT_BAM"
     samtools index "$OUT_BAM"
