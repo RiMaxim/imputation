@@ -1,4 +1,5 @@
 #For validation
+#$1 - name of chromosomes
 
 #!/bin/bash
 
