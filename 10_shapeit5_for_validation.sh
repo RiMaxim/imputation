@@ -1,4 +1,5 @@
 #For validation
+#$1 is name of chomosome
 
 ./phase_common_static --input $1.filtered.vcf.gz --region $1 --output $1.phased5.bcf --thread $2
 
